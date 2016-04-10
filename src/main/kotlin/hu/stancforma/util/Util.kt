@@ -1,9 +1,12 @@
 package hu.stancforma.util
 
+import org.joda.time.DateTime
 import java.io.Serializable
 import java.util.*
 
-public data class EnteringData(val date : Date, val enteringType : String, val userName : String ) : Serializable
+//public data class EnteringData(val date : Date, val enteringType : String, val userName : String ) : Serializable
+
+public data class EnteringData(val entering : List<DateTime>, val exit : List<DateTime>) : Serializable
 
 public fun <K : Any, V : Any> putMapList(key: K, value: V, map: HashMap<K, LinkedList<V>>): MutableMap<K, LinkedList<V>> {
     if (!map.containsKey(key)) {

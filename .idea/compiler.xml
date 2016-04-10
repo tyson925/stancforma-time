@@ -17,6 +17,9 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.7" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="stancforma-time_main" target="1.8" />
+      <module name="stancforma-time_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

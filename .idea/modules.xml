@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/stancforma-time.iml" filepath="$PROJECT_DIR$/.idea/modules/stancforma-time.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stancforma-time_main.iml" filepath="$PROJECT_DIR$/.idea/modules/stancforma-time_main.iml" group="stancforma-time" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stancforma-time_test.iml" filepath="$PROJECT_DIR$/.idea/modules/stancforma-time_test.iml" group="stancforma-time" />
     </modules>
   </component>
 </project>
