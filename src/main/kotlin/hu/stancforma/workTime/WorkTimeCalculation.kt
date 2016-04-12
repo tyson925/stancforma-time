@@ -1,5 +1,6 @@
 package hu.stancforma.workTime
 
+import hu.stancforma.excel.CreateExcel
 import hu.stancforma.util.EnteringData
 import hu.stancforma.util.putMapList
 import org.joda.time.DateTime
@@ -51,7 +52,8 @@ public class WorkTimeCalculation {
         val result = getWorkTime(userTimeDataByDay)
         println(result)
         printResults(result,2016,3)
-
+        val createExcel = CreateExcel()
+        createExcel.createXlsToUserData(result)
     }
 
     private fun getWorkTime(userTimeDataByDay : HashMap<Int,EnteringData>) : Map<Int,Long>{
