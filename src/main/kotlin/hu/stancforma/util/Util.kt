@@ -8,6 +8,8 @@ import java.util.*
 
 public data class EnteringData(val entering : List<DateTime>, val exit : List<DateTime>) : Serializable
 
+public val resultsRootDirectory = "./data/xls"
+
 public fun <K : Any, V : Any> putMapList(key: K, value: V, map: HashMap<K, LinkedList<V>>): MutableMap<K, LinkedList<V>> {
     if (!map.containsKey(key)) {
 

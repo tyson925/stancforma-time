@@ -1,5 +1,6 @@
 package hu.stancforma.excel
 
+import hu.stancforma.util.resultsRootDirectory
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.joda.time.DateTime
 import java.io.FileOutputStream
@@ -47,7 +48,7 @@ public class CreateExcel() {
         writeWorkBook(workbook,"./data/test.xlsx")
     }
 
-    public fun createXlsToUserData(timeDatas : Map<Int,Long>){
+    public fun createXlsToUserData(timeDatas : Map<Int,Long>, fileName: String){
         //Blank workbook
         val workbook = XSSFWorkbook();
 
@@ -60,7 +61,12 @@ public class CreateExcel() {
         }
         val keyset = data.keys
 
-        var rownum = 0
+        val firstRow = sheet.createRow(0)
+        val cell1 = firstRow.createCell(0)
+        cell1.setCellValue("Datum")
+        val cell2 = firstRow.createCell(1)
+        cell2.setCellValue("Ledolgozott Percek")
+        var rownum = 1
         keyset.forEach { key ->
 
             val row = sheet.createRow(rownum++)
@@ -74,7 +80,7 @@ public class CreateExcel() {
             }
         }
 
-        writeWorkBook(workbook,"./data/test.xlsx")
+        writeWorkBook(workbook,"$resultsRootDirectory/$fileName.xlsx")
 
     }
 

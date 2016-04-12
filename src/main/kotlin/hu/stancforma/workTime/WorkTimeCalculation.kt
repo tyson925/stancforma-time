@@ -11,16 +11,16 @@ import java.util.*
 
 public class WorkTimeCalculation {
 
-    val timeZone = TimeZone.getTimeZone("CET");
-    val calendar = Calendar.getInstance(timeZone);
-    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.US)
 
-    constructor() {
-        simpleDateFormat.setTimeZone(timeZone)
+    public fun readUserDatas(rootDirectory : String){
+
+        File(rootDirectory).listFiles().filter { file -> file.name.endsWith(".txt") }.forEach { file ->
+            readUserData(file)
+        }
     }
 
-    public fun readUserData() {
-        val file = File("./data/Nagy_F_0316_0404.txt")
+    public fun readUserData(file : File) {
+        //val file = File("./data/Nagy_F_0316_0404.txt")
         val lines = file.readLines(charset("ISO-8859-1"))
         val userTimeDataByDay = HashMap<Int, EnteringData>()
         val enterings = HashMap<Int, LinkedList<DateTime>>()
@@ -53,7 +53,8 @@ public class WorkTimeCalculation {
         println(result)
         printResults(result,2016,3)
         val createExcel = CreateExcel()
-        createExcel.createXlsToUserData(result)
+        val fileName = file.name.split(Regex("/")).last().split(".")[0]
+        createExcel.createXlsToUserData(result,fileName)
     }
 
     private fun getWorkTime(userTimeDataByDay : HashMap<Int,EnteringData>) : Map<Int,Long>{
@@ -124,6 +125,9 @@ public class WorkTimeCalculation {
 fun main(args: Array<String>) {
     val run = WorkTimeCalculation()
     //run.readOneDayData()
-    run.readUserData()
+    run.readUserDatas("./data/txt")
+
+
+
 }
 
