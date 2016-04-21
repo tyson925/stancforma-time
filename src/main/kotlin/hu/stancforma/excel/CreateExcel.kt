@@ -1,5 +1,7 @@
 package hu.stancforma.excel
 
+import hu.stancforma.util.WorkTimeData
+import hu.stancforma.util.getMuszakType
 import hu.stancforma.util.resultsRootDirectory
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.joda.time.DateTime
@@ -45,42 +47,64 @@ public class CreateExcel() {
         }
         println(sheet)
         //XSSFWorkbook(sheet)
-        writeWorkBook(workbook,"./data/test.xlsx")
+        writeWorkBook(workbook, "./data/test.xlsx")
     }
 
-    public fun createXlsToUserData(timeDatas : Map<Int,Long>, fileName: String){
+    public fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, fileName: String) {
         //Blank workbook
         val workbook = XSSFWorkbook();
+        val createHelper = workbook.getCreationHelper();
 
         //Create a blank sheet
         val sheet = workbook.createSheet("Employee Data");
-        val data = TreeMap<DateTime, Long>();
-        //data.put("1", arrayOf("Datum", "ledolgozott percerk"))
-        timeDatas.forEach { timeData ->
-            data.put(DateTime(2016,3,timeData.key,0,0), timeData.value)
-        }
-        val keyset = data.keys
+
+        val cellStyle = workbook.createCellStyle()
+        cellStyle.dataFormat = createHelper.createDataFormat().getFormat("yyyy/m/d")
+
+        val cellStyle2 = workbook.createCellStyle()
+        cellStyle2.dataFormat = createHelper.createDataFormat().getFormat("h:mm")
+
 
         val firstRow = sheet.createRow(0)
         val cell1 = firstRow.createCell(0)
         cell1.setCellValue("Datum")
+
         val cell2 = firstRow.createCell(1)
-        cell2.setCellValue("Ledolgozott Percek")
+        cell2.setCellValue("Muszak")
+        val cell3 = firstRow.createCell(2)
+        cell3.setCellValue("Erkezes")
+        val cell4 = firstRow.createCell(3)
+        cell4.setCellValue("Tavozas")
+        val cell5 = firstRow.createCell(4)
+        cell5.setCellValue("Ledolgozott Percek")
         var rownum = 1
-        keyset.forEach { key ->
+        //keyset.forEach { key ->
+        var sumWorkTime = 0L
+        timeDatas.forEach { timeData ->
 
             val row = sheet.createRow(rownum++)
-            val workedMinutes = data.get(key)!!
+
             val dateCell = row.createCell(0);
-            println(key.toDate())
-            dateCell.setCellValue(key.toDate())
-            val workTimeCell = row.createCell(1);
-            if (workedMinutes is Long){
-                workTimeCell.setCellValue(workedMinutes.toDouble())
+            println(timeData.date.toDate())
+            dateCell.setCellValue(timeData.date.toDate())
+            dateCell.setCellStyle(cellStyle)
+            val muszakCell = row.createCell(1)
+            muszakCell.setCellValue(getMuszakType(timeData.begin, timeData.end))
+
+            val beginTimeCell = row.createCell(2)
+            beginTimeCell.setCellValue(timeData.begin.toDate())
+            beginTimeCell.setCellStyle(cellStyle2)
+            val endTimeCell = row.createCell(3)
+            endTimeCell.setCellValue(timeData.end.toDate())
+            endTimeCell.setCellStyle(cellStyle2)
+            val workTimeCell = row.createCell(4)
+            if (timeData.workTimeMinutes is Long) {
+                workTimeCell.setCellValue(timeData.workTimeMinutes.toDouble())
+                sumWorkTime += timeData.workTimeMinutes
             }
         }
 
-        writeWorkBook(workbook,"$resultsRootDirectory/$fileName.xlsx")
+        writeWorkBook(workbook, "$resultsRootDirectory/$fileName.xlsx")
 
     }
 

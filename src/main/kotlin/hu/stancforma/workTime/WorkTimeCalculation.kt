@@ -2,11 +2,12 @@ package hu.stancforma.workTime
 
 import hu.stancforma.excel.CreateExcel
 import hu.stancforma.util.EnteringData
+import hu.stancforma.util.WorkTimeData
+import hu.stancforma.util.getDayOfDate
 import hu.stancforma.util.putMapList
 import org.joda.time.DateTime
 import org.joda.time.Minutes
 import java.io.File
-import java.text.SimpleDateFormat
 import java.util.*
 
 public class WorkTimeCalculation {
@@ -51,14 +52,14 @@ public class WorkTimeCalculation {
         }
         val result = getWorkTime(userTimeDataByDay)
         println(result)
-        printResults(result,2016,3)
+        printResults(result)
         val createExcel = CreateExcel()
         val fileName = file.name.split(Regex("/")).last().split(".")[0]
         createExcel.createXlsToUserData(result,fileName)
     }
 
-    private fun getWorkTime(userTimeDataByDay : HashMap<Int,EnteringData>) : Map<Int,Long>{
-        val results = HashMap<Int,Long>()
+    private fun getWorkTime(userTimeDataByDay : HashMap<Int,EnteringData>) : LinkedList<WorkTimeData>{
+        val results = LinkedList<WorkTimeData>()
         userTimeDataByDay.forEach { day, enterings ->
             var workMinutes = 0L
             enterings.entering.sortedDescending()
@@ -67,9 +68,18 @@ public class WorkTimeCalculation {
                 for (j in 0..enterings.entering.size - 1) {
                     workMinutes += getDiff(enterings.entering[j], enterings.exit[j])
                 }
-                results.put(day,workMinutes)
+                results.add(WorkTimeData(workMinutes,enterings.entering.last(),enterings.exit.first(),getDayOfDate(enterings.entering.last())))
+
             } else {
-                println("ki/belepesi problema")
+                if (enterings.entering.isNotEmpty() && enterings.exit.isNotEmpty()){
+                    results.add(WorkTimeData(0L,enterings.entering.last(),enterings.exit.first(),getDayOfDate(enterings.entering.last())))
+                } else if (enterings.entering.isNotEmpty() && enterings.exit.isEmpty()){
+                    results.add(WorkTimeData(0L,enterings.entering.last(),enterings.entering.first(),getDayOfDate(enterings.entering.last())))
+                } else if (enterings.entering.isEmpty() && enterings.exit.isNotEmpty()){
+                    results.add(WorkTimeData(0L,enterings.exit.last(),enterings.exit.first(),getDayOfDate(enterings.exit.first())))
+                }
+
+                println("ki/belepesi problema: ${enterings.entering.first()}")
             }
         }
         return results
@@ -113,9 +123,11 @@ public class WorkTimeCalculation {
         //return diff.toMinutes()
     }
 
-    public fun printResults(result : Map<Int,Long>,year: Int,mounth : Int){
+    public fun printResults(result : LinkedList<WorkTimeData>){
         result.forEach { entity ->
-            println("${year}.${mounth}.${entity.key},${entity.value}")
+            val date = entity.begin
+            println("${entity.date},${entity.workTimeMinutes}")
+            //println("${year}.${mounth}.${entity.key},${entity.value}")
         }
     }
 
