@@ -1,6 +1,7 @@
 package hu.stancforma.excel
 
 import hu.stancforma.util.WorkTimeData
+import hu.stancforma.util.getMultiply
 import hu.stancforma.util.getMuszakType
 import hu.stancforma.util.resultsRootDirectory
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
@@ -77,9 +78,13 @@ public class CreateExcel() {
         cell4.setCellValue("Tavozas")
         val cell5 = firstRow.createCell(4)
         cell5.setCellValue("Ledolgozott Percek")
+        val cell6 = firstRow.createCell(4)
+        cell6.setCellValue("Korrigalt Percek")
+
         var rownum = 1
         //keyset.forEach { key ->
         var sumWorkTime = 0L
+        var sumCorrigateWorktime = 0.0
         timeDatas.forEach { timeData ->
 
             val row = sheet.createRow(rownum++)
@@ -89,7 +94,8 @@ public class CreateExcel() {
             dateCell.setCellValue(timeData.date.toDate())
             dateCell.setCellStyle(cellStyle)
             val muszakCell = row.createCell(1)
-            muszakCell.setCellValue(getMuszakType(timeData.begin, timeData.end))
+            val muszak = getMuszakType(timeData.begin, timeData.end)
+            muszakCell.setCellValue(muszak)
 
             val beginTimeCell = row.createCell(2)
             beginTimeCell.setCellValue(timeData.begin.toDate())
@@ -98,11 +104,31 @@ public class CreateExcel() {
             endTimeCell.setCellValue(timeData.end.toDate())
             endTimeCell.setCellStyle(cellStyle2)
             val workTimeCell = row.createCell(4)
+            val corrigateWorkTimeCell = row.createCell(5)
             if (timeData.workTimeMinutes is Long) {
                 workTimeCell.setCellValue(timeData.workTimeMinutes.toDouble())
+                val corrigateWorkTime = (timeData.workTimeMinutes - 10) * getMultiply(muszak)
+                sumCorrigateWorktime += corrigateWorkTime
+                corrigateWorkTimeCell.setCellValue(corrigateWorkTime)
                 sumWorkTime += timeData.workTimeMinutes
             }
         }
+        val row = sheet.createRow(rownum++)
+        var sumWorkTimeCell = row.createCell(4)
+        sumWorkTimeCell.setCellValue(sumWorkTime.toDouble())
+        var sumCorrigateWorkTimeCell = row.createCell(5)
+        sumCorrigateWorkTimeCell.setCellValue(sumCorrigateWorktime)
+
+        val row2 = sheet.createRow(rownum++)
+
+        row2.createCell(0).setCellValue("Ora ber:")
+        row2.createCell(1).setCellValue(850.0)
+
+        val fee = (sumCorrigateWorktime / 60) * 850
+
+        val row3 = sheet.createRow(rownum++)
+        row3.createCell(0).setCellValue("Kifizetett ber:")
+        row3.createCell(1).setCellValue(fee)
 
         writeWorkBook(workbook, "$resultsRootDirectory/$fileName.xlsx")
 

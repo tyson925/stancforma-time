@@ -31,6 +31,16 @@ public fun getMuszakType(begin : DateTime,end: DateTime) : String {
     }
 }
 
+public fun getMultiply(muszakType : String) :Double{
+    if ("HETVEGE".equals(muszakType)){
+        return 1.34
+    } else if ("ESTI".equals(muszakType)){
+        return 1.1
+    } else {
+        return 1.0
+    }
+}
+
 public fun <K : Any, V : Any> putMapList(key: K, value: V, map: HashMap<K, LinkedList<V>>): MutableMap<K, LinkedList<V>> {
     if (!map.containsKey(key)) {
 
