@@ -137,7 +137,7 @@ public class WorkTimeCalculation {
 fun main(args: Array<String>) {
     val run = WorkTimeCalculation()
     //run.readOneDayData()
-    run.readUserDatas("./data/txt")
+    run.readUserDatas("./data/txt_jan")
 
 
 

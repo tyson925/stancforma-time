@@ -32,7 +32,7 @@ public class DictionaryLabel(){
     }
 
     public fun dictionaryLabel(dictionaryName: String, corpus: List<List<PredictedData>>, tag: String) {
-        val take = 1000
+        val take = 100000
         val dictionary = readDictRawStringList(dictionaryName,take)
         val RET = LinkedList<Array<String>>()
         val writer = BufferedWriter(OutputStreamWriter(FileOutputStream("./data/collocation_$take.iob")))
@@ -93,6 +93,6 @@ public class DictionaryLabel(){
 fun main(args: Array<String>) {
  val dicLabel = DictionaryLabel()
     val corpus = dicLabel.readCorpusData("./../MWE/data/sancl/schneider.txt")
-    dicLabel.dictionaryLabel("./../MLyBigData/CoreNlp/googleNgramsList.txt",corpus,"COL");
+    dicLabel.dictionaryLabel("./../MLyBigData/CoreNlp/googleNgramsList_3.txt",corpus,"COL");
 }
 

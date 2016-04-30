@@ -540,7 +540,7 @@ public class FMeasure {
 
             String fileName = "./../StanfordCore/data/parallel/iobs/hun.iob";
 
-            fMeasure.evaulateFromTxt("./data/collection.iob");
+            fMeasure.evaulateFromTxt("./data/collocation_100000.iob");
 
 
 
