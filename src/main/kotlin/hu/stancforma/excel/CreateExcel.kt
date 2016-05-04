@@ -1,14 +1,10 @@
 package hu.stancforma.excel
 
 import hu.stancforma.util.WorkTimeData
-import hu.stancforma.util.getMultiply
 import hu.stancforma.util.getMuszakType
-import hu.stancforma.util.resultsRootDirectory
+import hu.stancforma.util.writeWorkBook
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import org.joda.time.DateTime
-import java.io.FileOutputStream
-import java.io.File
 import java.util.*
 
 
@@ -47,21 +43,25 @@ public class CreateExcel() {
             }
 
         }
-        println(sheet)
+        //println(sheet)
         //XSSFWorkbook(sheet)
         writeWorkBook(workbook, "./data/test.xlsx")
     }
 
-    public fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, fileName: String) {
+    public fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, fileName: String, oraBer: Int, bruttoBer: Int, workHour: Int): XSSFWorkbook {
         //Blank workbook
         val workbook = XSSFWorkbook();
         val createHelper = workbook.getCreationHelper();
+
+        val errorStyle = createHelper.createExtendedColor()
+        errorStyle.rgb = byteArrayOf(255.toByte(), 255.toByte(), 0)
 
         //Create a blank sheet
         val sheet = workbook.createSheet("Employee Data");
 
         val cellStyle = workbook.createCellStyle()
         cellStyle.dataFormat = createHelper.createDataFormat().getFormat("yyyy/m/d")
+
 
         val cellStyle2 = workbook.createCellStyle()
         cellStyle2.dataFormat = createHelper.createDataFormat().getFormat("h:mm")
@@ -83,24 +83,18 @@ public class CreateExcel() {
         firstRow.createCell(afternoonColumn).setCellValue("Delutan")
         val holidayColumn = 6
         firstRow.createCell(holidayColumn).setCellValue("Hetvege")
-        //firstRow.createCell(7).setCellValue("Ledolgozott Percek")
-        //firstRow.createCell(8).setCellValue("Korrigalt Percek")
 
         var rownum = 1
         //keyset.forEach { key ->
         //var sumWorkTime = 0L
         var sumCorrigateWorktime = 0.0
 
-        var delelott = 0.0
-        var delutan = 0.0
-        var hetvegen = 0.0
-
         timeDatas.forEach { timeData ->
 
             val row = sheet.createRow(rownum++)
 
             val dateCell = row.createCell(0);
-            println(timeData.date.toDate())
+            //println(timeData.date.toDate())
             dateCell.setCellValue(timeData.date.toDate())
             dateCell.setCellStyle(cellStyle)
             val muszakCell = row.createCell(1)
@@ -118,7 +112,9 @@ public class CreateExcel() {
 
             if ("HETVEGE".equals(muszak)) {
                 //hetvegen += timeData.workTimeMinutes
-                row.createCell(holidayColumn).setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+                val cell = row.createCell(holidayColumn)
+                cell.setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+
             } else if ("REGGEL".equals(muszak)) {
                 //delelott += timeData.workTimeMinutes
                 row.createCell(morningColumn).setCellValue(timeData.workTimeMinutes.toDouble() - 10)
@@ -127,14 +123,6 @@ public class CreateExcel() {
                 row.createCell(afternoonColumn).setCellValue(timeData.workTimeMinutes.toDouble() - 10)
             }
 
-            /*if (timeData.workTimeMinutes is Long) {
-                workTimeCell.setCellValue(timeData.workTimeMinutes.toDouble())
-
-                val corrigateWorkTime = (timeData.workTimeMinutes - 10) * getMultiply(muszak)
-                sumCorrigateWorktime += corrigateWorkTime
-                corrigateWorkTimeCell.setCellValue(corrigateWorkTime)
-                sumWorkTime += timeData.workTimeMinutes
-            }*/
         }
         val lastRow = rownum
 
@@ -178,7 +166,7 @@ public class CreateExcel() {
 
         val rowBer = sheet.createRow(rownum++)
         rowBer.createCell(0).setCellValue("Ora ber:")
-        rowBer.createCell(1).setCellValue(850.0)
+        rowBer.createCell(1).setCellValue(oraBer.toDouble())
         val oraBer = rowBer.getCell(1).numericCellValue
         val oraBerHiv = "B${rowBer.rowNum + 1}"
 
@@ -198,7 +186,7 @@ public class CreateExcel() {
         afternoonRow.createCell(0).setCellValue("Delutan:")
         val afternoonWorkTimeValue = afternoonRow.createCell(1)
         afternoonWorkTimeValue.cellType = HSSFCell.CELL_TYPE_FORMULA
-        afternoonWorkTimeValue.cellFormula = "${afternoonWorkTimeColumn}${afternoonWorkTimeInHour.rowIndex +1}"
+        afternoonWorkTimeValue.cellFormula = "${afternoonWorkTimeColumn}${afternoonWorkTimeInHour.rowIndex + 1}"
 
         val afternoonFee = afternoonRow.createCell(morningColumn)
         afternoonFee.cellType = HSSFCell.CELL_TYPE_FORMULA
@@ -208,7 +196,7 @@ public class CreateExcel() {
         holidayRow.createCell(0).setCellValue("Hetvegen:")
         val holidayWorkTimeValue = holidayRow.createCell(1)
         holidayWorkTimeValue.cellType = HSSFCell.CELL_TYPE_FORMULA
-        holidayWorkTimeValue.cellFormula = "${holidayWorkTimeColumn}${holidayWorkTimeInHour.rowIndex +1}"
+        holidayWorkTimeValue.cellFormula = "${holidayWorkTimeColumn}${holidayWorkTimeInHour.rowIndex + 1}"
 
         val hetvegeBer = holidayRow.createCell(morningColumn)
         hetvegeBer.cellType = HSSFCell.CELL_TYPE_FORMULA
@@ -238,25 +226,22 @@ public class CreateExcel() {
 
         val hoursRow = sheet.createRow(rownum++)
         hoursRow.createCell(0).setCellValue("Ledolgozando orak:")
-        hoursRow.createCell(1).setCellValue(160.0)
+        hoursRow.createCell(1).setCellValue(workHour.toDouble())
 
         val extraHoursCell = extraHoursRow.createCell(1)
         extraHoursCell.cellType = HSSFCell.CELL_TYPE_FORMULA
         extraHoursCell.cellFormula = "IF(SUM(B${morningRow.rowNum + 1}:B${afternoonRow.rowNum + 1})>B${hoursRow.rowNum + 1}," +
                 "SUM(B${morningRow.rowNum + 1}:B${afternoonRow.rowNum + 1})-B${hoursRow.rowNum + 1},0.0)"
 
-        /*        val worktimeInAMounth = delelottRow.getCell(1).numericCellValue + delutanRow.getCell(1).numericCellValue
-                if (worktimeInAMounth <= hoursRow.getCell(1).numericCellValue) {
-                    val extraTimes = worktimeInAMounth - hoursRow.getCell(1).numericCellValue
-                    extraHoursRow.createCell(1).setCellValue(extraTimes)
-                } else {
-                    extraHoursRow.createCell(1).setCellValue(0.0)
-                }*/
         val extraHoursBer = extraHoursRow.createCell(4)
         extraHoursBer.cellType = HSSFCell.CELL_TYPE_FORMULA
         extraHoursBer.cellFormula = "B${extraHoursRow.rowNum + 1} * ${oraBerHiv} * 0.34"
 
         val fee = (sumCorrigateWorktime / 60) * 850
+
+        val bruttoBerRow = sheet.createRow(rownum++)
+        bruttoBerRow.createCell(0).setCellValue("Brutto ber:")
+        bruttoBerRow.createCell(1).setCellValue(bruttoBer.toDouble())
 
         val row3 = sheet.createRow(rownum++)
         row3.createCell(0).setCellValue("Kifizetett ber:")
@@ -267,16 +252,7 @@ public class CreateExcel() {
         allFee.setCellType(HSSFCell.CELL_TYPE_FORMULA)
         allFee.setCellFormula(sumAllFormula)
 
-        writeWorkBook(workbook, "$resultsRootDirectory/$fileName.xlsx")
-
-    }
-
-    public fun writeWorkBook(workbook: XSSFWorkbook, fileName: String) {
-        val out = FileOutputStream(File(fileName))
-        workbook.write(out)
-        out.close()
-        println("$fileName written successfully on disk.")
-
+        return workbook
 
     }
 

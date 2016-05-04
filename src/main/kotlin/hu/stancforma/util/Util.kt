@@ -1,8 +1,11 @@
 package hu.stancforma.util
 
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.joda.time.DateTime
 import java.io.Serializable
 import java.util.*
+import java.io.File
+import java.io.FileOutputStream
 
 //public data class EnteringData(val date : Date, val enteringType : String, val userName : String ) : Serializable
 
@@ -10,9 +13,9 @@ public data class EnteringData(val entering : List<DateTime>, val exit : List<Da
 
 public data class WorkTimeData(val workTimeMinutes : Long, val begin : DateTime,val end : DateTime, val date : DateTime) : Serializable
 
+public data class UserData(val userName : String,val oraBer : Int, val bruttoBer : Int) : Serializable
 
-
-public val resultsRootDirectory = "./data/xls"
+public val resultsRootDirectory = "./data/xls/"
 
 public fun getDayOfDate(date : DateTime) : DateTime{
     return DateTime(date.year,date.monthOfYear,date.dayOfMonth,0,0)
@@ -29,6 +32,15 @@ public fun getMuszakType(begin : DateTime,end: DateTime) : String {
     } else {
         return "NICS MUSZAK"
     }
+}
+
+public fun writeWorkBook(workbook: XSSFWorkbook, fileName: String) {
+    val out = FileOutputStream(File(fileName))
+    workbook.write(out)
+    out.close()
+    println("$fileName written successfully on disk.")
+
+
 }
 
 public fun getMultiply(muszakType : String) :Double{
@@ -57,3 +69,25 @@ public fun <K : Any, V : Any> putMapList(key: K, value: V, map: HashMap<K, Linke
 }
 
 
+public fun extractNameFromFileName(file : File) : String {
+
+    val splittedFileName = file.name.split("_")
+    if ("Klausenberger".equals(splittedFileName[0])){
+        return splittedFileName[0]
+    } else {
+        return "${splittedFileName[0]}_${splittedFileName[1]}"
+    }
+}
+
+public fun readUserDB() : Map<String,UserData>{
+    val results = HashMap<String,UserData>()
+    File("./data/db.txt").forEachLine { line ->
+        val splittedLine = line.split(",")
+        results.put(splittedLine[0],UserData(splittedLine[0],splittedLine[1].toInt(),splittedLine[2].toInt()))
+    }
+    return results
+}
+
+public fun getDirectory(rootDirectory : String) : String{
+    return rootDirectory.split("\\").dropLast(1).last()
+}
