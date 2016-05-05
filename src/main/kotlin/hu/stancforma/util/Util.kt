@@ -1,5 +1,7 @@
 package hu.stancforma.util
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.hssf.util.HSSFColor
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.joda.time.DateTime
 import java.io.Serializable
@@ -89,5 +91,22 @@ public fun readUserDB() : Map<String,UserData>{
 }
 
 public fun getDirectory(rootDirectory : String) : String{
-    return rootDirectory.split("\\").dropLast(1).last()
+    //return rootDirectory.split("\\").dropLast(1).last()
+    return rootDirectory.split("/").dropLast(1).last()
+}
+
+public fun setColor(workbook : HSSFWorkbook, r : Byte, g : Byte, b : Byte) : HSSFColor? {
+    val palette = workbook.getCustomPalette();
+    var hssfColor : HSSFColor? = null;
+    try {
+        hssfColor= palette.findColor(r, g, b);
+        if (hssfColor == null ){
+            palette.setColorAtIndex(HSSFColor.LAVENDER.index, r, g,b);
+            hssfColor = palette.getColor(HSSFColor.GREY_25_PERCENT.index);
+        }
+    } catch (e : Exception) {
+        e.printStackTrace()
+    }
+
+    return hssfColor
 }

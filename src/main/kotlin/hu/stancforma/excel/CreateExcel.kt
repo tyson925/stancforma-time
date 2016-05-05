@@ -2,8 +2,11 @@ package hu.stancforma.excel
 
 import hu.stancforma.util.WorkTimeData
 import hu.stancforma.util.getMuszakType
+import hu.stancforma.util.setColor
 import hu.stancforma.util.writeWorkBook
 import org.apache.poi.hssf.usermodel.HSSFCell
+import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.ss.usermodel.CellStyle
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.util.*
 
@@ -48,13 +51,22 @@ public class CreateExcel() {
         writeWorkBook(workbook, "./data/test.xlsx")
     }
 
-    public fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, fileName: String, oraBer: Int, bruttoBer: Int, workHour: Int): XSSFWorkbook {
+    public fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, name: String, oraBer: Int, bruttoBer: Int, workHour: Int): XSSFWorkbook {
         //Blank workbook
         val workbook = XSSFWorkbook();
         val createHelper = workbook.getCreationHelper();
 
-        val errorStyle = createHelper.createExtendedColor()
-        errorStyle.rgb = byteArrayOf(255.toByte(), 255.toByte(), 0)
+        val errorStyle = workbook.createCellStyle()
+        //val lightGray =  setColor(HSSFWorkbook(),0, 255.toByte(), 0)
+        val errorColor = createHelper.createExtendedColor()
+        errorColor.rgb = byteArrayOf(255.toByte(), 0.toByte(), 0)
+        //errorStyle.setFillBackgroundColor(lightGray!!.index)
+        errorStyle.setFillBackgroundColor(errorColor)
+        errorStyle.setFillPattern(CellStyle.THIN_BACKWARD_DIAG)
+
+
+
+        //errorStyle.setFillForegroundColor(errorColor)
 
         //Create a blank sheet
         val sheet = workbook.createSheet("Employee Data");
@@ -66,25 +78,27 @@ public class CreateExcel() {
         val cellStyle2 = workbook.createCellStyle()
         cellStyle2.dataFormat = createHelper.createDataFormat().getFormat("h:mm")
 
-
         val firstRow = sheet.createRow(0)
-        val cell1 = firstRow.createCell(0)
+        firstRow.createCell(0).setCellValue("Dolgozo neve:")
+        firstRow.createCell(1).setCellValue(name)
+        val secondRow = sheet.createRow(1)
+        val cell1 = secondRow.createCell(0)
         cell1.setCellValue("Datum")
 
-        val cell2 = firstRow.createCell(1)
+        val cell2 = secondRow.createCell(1)
         cell2.setCellValue("Muszak")
-        val cell3 = firstRow.createCell(2)
+        val cell3 = secondRow.createCell(2)
         cell3.setCellValue("Erkezes")
-        val cell4 = firstRow.createCell(3)
+        val cell4 = secondRow.createCell(3)
         cell4.setCellValue("Tavozas")
         val morningColumn = 4
-        firstRow.createCell(morningColumn).setCellValue("Reggel")
+        secondRow.createCell(morningColumn).setCellValue("Reggel")
         val afternoonColumn = 5
-        firstRow.createCell(afternoonColumn).setCellValue("Delutan")
+        secondRow.createCell(afternoonColumn).setCellValue("Delutan")
         val holidayColumn = 6
-        firstRow.createCell(holidayColumn).setCellValue("Hetvege")
+        secondRow.createCell(holidayColumn).setCellValue("Hetvege")
 
-        var rownum = 1
+        var rownum = 2
         //keyset.forEach { key ->
         //var sumWorkTime = 0L
         var sumCorrigateWorktime = 0.0
@@ -99,7 +113,11 @@ public class CreateExcel() {
             dateCell.setCellStyle(cellStyle)
             val muszakCell = row.createCell(1)
             val muszak = getMuszakType(timeData.begin, timeData.end)
+
             muszakCell.setCellValue(muszak)
+            if ("NICS MUSZAK".equals(muszak)){
+                muszakCell.cellStyle = errorStyle
+            }
 
             val beginTimeCell = row.createCell(2)
             beginTimeCell.setCellValue(timeData.begin.toDate())
@@ -114,13 +132,27 @@ public class CreateExcel() {
                 //hetvegen += timeData.workTimeMinutes
                 val cell = row.createCell(holidayColumn)
                 cell.setCellValue(timeData.workTimeMinutes.toDouble() - 10)
-
+                if (timeData.workTimeMinutes.toDouble() == 0.0) {
+                    cell.cellStyle = errorStyle
+                }
             } else if ("REGGEL".equals(muszak)) {
-                //delelott += timeData.workTimeMinutes
-                row.createCell(morningColumn).setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+                val cell = row.createCell(morningColumn)
+                cell.setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+                if (timeData.workTimeMinutes.toDouble() == 0.0) {
+                    cell.cellStyle = errorStyle
+                }
             } else if ("ESTI".equals(muszak)) {
-                //delutan += timeData.workTimeMinutes
-                row.createCell(afternoonColumn).setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+                val cell = row.createCell(afternoonColumn)
+                cell.setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+                if (timeData.workTimeMinutes.toDouble() == 0.0) {
+                    cell.cellStyle = errorStyle
+                }
+            } else if ("NICS MUSZAK".equals(muszak)) {
+                val cell = row.createCell(morningColumn)
+                cell.setCellValue(timeData.workTimeMinutes.toDouble() - 10)
+                if (timeData.workTimeMinutes.toDouble() == 0.0) {
+                    cell.cellStyle = errorStyle
+                }
             }
 
         }

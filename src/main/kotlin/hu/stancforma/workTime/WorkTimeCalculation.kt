@@ -74,7 +74,7 @@ public class WorkTimeCalculation {
         if (userData != null){
             val createExcel = CreateExcel()
             val fileName = file.name.split(Regex("/")).last().split(".")[0]
-            val workbook = createExcel.createXlsToUserData(result, fileName,userData.oraBer,userData.bruttoBer,workHours)
+            val workbook = createExcel.createXlsToUserData(result, extractNameFromFileName(file),userData.oraBer,userData.bruttoBer,workHours)
             val directory = "$resultsRootDirectory/${getDirectory(file.path)}"
             if (!File(directory).exists()){
                 File(directory).mkdirs()
