@@ -82,7 +82,7 @@ public class WorkTimeCalculation {
             writeWorkBook(workbook, "$directory/$fileName.xlsx")
         } else {
             println("$file\t$userName")
-            System.exit(1)
+            //System.exit(1)
         }
     }
 

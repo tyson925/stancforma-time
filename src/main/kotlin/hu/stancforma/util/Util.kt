@@ -74,11 +74,18 @@ public fun <K : Any, V : Any> putMapList(key: K, value: V, map: HashMap<K, Linke
 public fun extractNameFromFileName(file : File) : String {
 
     val splittedFileName = file.name.split("_")
-    if ("Klausenberger".equals(splittedFileName[0])){
-        return splittedFileName[0]
-    } else {
-        return "${splittedFileName[0]}_${splittedFileName[1]}"
-    }
+//    if ("Klausenberger".equals(splittedFileName[0])){
+
+  //  } else {
+        if (splittedFileName.size< 2 ){
+            //println("File nev problema: " + file)
+            return splittedFileName[0]
+        } else {
+            return "${splittedFileName[0]}_${splittedFileName[1].split(".")[0]}"
+
+        }
+
+    //}
 }
 
 public fun readUserDB() : Map<String,UserData>{

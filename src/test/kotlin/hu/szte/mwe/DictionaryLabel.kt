@@ -1,10 +1,7 @@
 package hu.szte.mwe
 
-import java.io.BufferedWriter
-import java.io.FileOutputStream
-import java.io.OutputStreamWriter
+import java.io.*
 import java.util.*
-import java.io.File
 
 public data class PredictedData(val token : String,val prediction : String)
 
@@ -26,23 +23,58 @@ public class DictionaryLabel(){
         return corpus
     }
 
+    public fun printLabelStat(){
+
+        val reader = BufferedReader(InputStreamReader(FileInputStream("./data/collocation_10000.iob")))
+        var line : String? = reader.readLine()
+        val list = LinkedList<String>()
+        while (line != null){
+            line = reader.readLine()
+            if (line != null) {
+                var lineSplit = line.split(" ")
+                if (lineSplit.size > 1 && "B-COL".equals(lineSplit[1]) && "O".equals(lineSplit[2])) {
+                    var collocation = lineSplit[0]
+                    line = reader.readLine()
+                    lineSplit = line.split(" ")
+                    while (line != null && lineSplit.size > 1 && "I-COL".equals(lineSplit[1]) && "O".equals(lineSplit[2])) {
+                        collocation += " " + lineSplit[0]
+                        line = reader.readLine()
+                        if (line != null) {
+                            lineSplit = line.split(" ")
+                        }
+                    }
+                    list.add(collocation)
+                    //println(collocation)
+                }
+            }
+        }
+        val res = list.groupBy { item -> item }.map { item -> Pair(item.key,item.value.size) }.sortedByDescending { item -> item.second }.joinToString("\n")
+        File("./data/error.txt").writeText(res)
+        println(res)
+    }
+
     public fun readDictRawStringList(fileName : String, take : Int) : List<String>{
         return File(fileName).readLines().map { line -> line.toLowerCase() }.take(take)
 
     }
 
     public fun dictionaryLabel(dictionaryName: String, corpus: List<List<PredictedData>>, tag: String) {
-        val take = 100000
-        val dictionary = readDictRawStringList(dictionaryName,take)
+        val take = 20000
+        val dictionary = readDictRawStringList(dictionaryName,take).map { collocation -> collocation.toLowerCase().trim() }.toSet()
+
+        println("APART\t" + dictionary.contains("apart from"))
         val RET = LinkedList<Array<String>>()
         val writer = BufferedWriter(OutputStreamWriter(FileOutputStream("./data/collocation_$take.iob")))
         for (sentence in corpus) {
             val prediction = Array<String>(sentence.size) { "O" }
             for (collokation in dictionary) {
-                val collokationArray = collokation.split(" ")
+                val collokationArray = collokation.toLowerCase().split(" ")
 
 
                 sentence.forEachIndexed {i, token ->
+                    if ("apart".equals(token.token.toLowerCase())){
+                      //  println(token)
+                    }
                     if (token.token.toLowerCase().equals(collokationArray[0])) {
                         var j = i
                         var collocationIndex = 0
@@ -93,6 +125,7 @@ public class DictionaryLabel(){
 fun main(args: Array<String>) {
  val dicLabel = DictionaryLabel()
     val corpus = dicLabel.readCorpusData("./../MWE/data/sancl/schneider.txt")
-    dicLabel.dictionaryLabel("./../MLyBigData/CoreNlp/googleNgramsList_3.txt",corpus,"COL");
+    dicLabel.dictionaryLabel("./../MLyBigData/CoreNlp/googleNgramsList.txt",corpus,"COL");
+    //dicLabel.printLabelStat()
 }
 

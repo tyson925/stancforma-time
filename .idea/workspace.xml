@@ -32,9 +32,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5dabcc73-e7d3-4a42-b7b0-3094cf7fb8a8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/util/Util.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/util/Util.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/workTime/WorkTimeCalculation.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/workTime/WorkTimeCalculation.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/hu/szte/eval/FMeasure.java" afterPath="$PROJECT_DIR$/src/test/java/hu/szte/eval/FMeasure.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt" afterPath="$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt" />
     </list>
     <ignored path="stancforma-time.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,24 +82,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6960">
               <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#31176#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#10111#10112#0" expanded="false" />
-                <element signature="e#10136#10137#0" expanded="false" />
-                <element signature="e#11868#11869#0" expanded="false" />
-                <element signature="e#11926#11927#0" expanded="false" />
-                <element signature="e#18602#18603#0" expanded="false" />
-                <element signature="e#18672#18673#0" expanded="false" />
-                <element signature="e#19556#19557#0" expanded="false" />
-                <element signature="e#19600#19601#0" expanded="false" />
-                <element signature="e#21817#21818#0" expanded="false" />
-                <element signature="e#21875#21876#0" expanded="false" />
-                <element signature="e#22029#22030#0" expanded="false" />
-                <element signature="e#22078#22079#0" expanded="false" />
-                <element signature="e#23369#23370#0" expanded="false" />
-                <element signature="e#23426#23427#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,8 +90,8 @@
       <file leaf-file-name="Util.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/util/Util.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="97" column="11" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
+            <state relative-caret-position="1245">
+              <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
               <folding>
                 <element signature="e#28#298#0" expanded="true" />
               </folding>
@@ -118,10 +102,10 @@
       <file leaf-file-name="DictionaryLabel.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+            <state relative-caret-position="1800">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding>
-                <element signature="e#21#155#0" expanded="true" />
+                <element signature="e#21#56#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,42 +114,18 @@
       <file leaf-file-name="FMeasure.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/hu/szte/eval/FMeasure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8010">
-              <caret line="552" column="0" selection-start-line="552" selection-start-column="0" selection-end-line="552" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#397#415#0" expanded="false" />
-                <element signature="e#466#474#0" expanded="false" />
-                <element signature="e#1044#1045#0" expanded="false" />
-                <element signature="e#1087#1088#0" expanded="false" />
-                <element signature="e#1185#1186#0" expanded="false" />
-                <element signature="e#1226#1227#0" expanded="false" />
-                <element signature="e#1322#1323#0" expanded="false" />
-                <element signature="e#1362#1363#0" expanded="false" />
-                <element signature="e#1500#1501#0" expanded="false" />
-                <element signature="e#1556#1557#0" expanded="false" />
-                <element signature="e#1686#1687#0" expanded="false" />
-                <element signature="e#1738#1739#0" expanded="false" />
-                <element signature="e#1864#1865#0" expanded="false" />
-                <element signature="e#1914#1915#0" expanded="false" />
-                <element signature="e#8661#8677#0" expanded="false" />
-                <element signature="e#10447#10455#0" expanded="false" />
-                <element signature="e#10513#10521#0" expanded="false" />
-                <element signature="e#11349#11357#0" expanded="false" />
-                <element signature="e#11411#11419#0" expanded="false" />
-                <element signature="e#15187#15193#0" expanded="false" />
-                <element signature="e#16592#16593#0" expanded="false" />
-                <element signature="e#16656#16657#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="7785">
+              <caret line="537" column="15" selection-start-line="537" selection-start-column="15" selection-end-line="537" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkTimeCalculation.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WorkTimeCalculation.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/workTime/WorkTimeCalculation.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+            <state relative-caret-position="542">
+              <caret line="174" column="5" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
               <folding>
                 <element signature="e#32#196#0" expanded="true" />
               </folding>
@@ -173,11 +133,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateExcel.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CreateExcel.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+            <state relative-caret-position="1125">
+              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding>
                 <element signature="e#29#392#0" expanded="true" />
               </folding>
@@ -190,83 +150,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1785">
               <caret line="216" column="23" selection-start-line="216" selection-start-column="11" selection-end-line="216" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#81250#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#12846#12865#0" expanded="false" />
-                <element signature="e#12934#12962#0" expanded="false" />
-                <element signature="e#18811#18812#0" expanded="false" />
-                <element signature="e#18847#18848#0" expanded="false" />
-                <element signature="e#26895#26896#0" expanded="false" />
-                <element signature="e#26948#26949#0" expanded="false" />
-                <element signature="e#34611#34612#0" expanded="false" />
-                <element signature="e#34662#34663#0" expanded="false" />
-                <element signature="e#34858#34859#0" expanded="false" />
-                <element signature="e#34908#34909#0" expanded="false" />
-                <element signature="e#36294#36295#0" expanded="false" />
-                <element signature="e#36348#36349#0" expanded="false" />
-                <element signature="e#36507#36508#0" expanded="false" />
-                <element signature="e#36567#36568#0" expanded="false" />
-                <element signature="e#36738#36739#0" expanded="false" />
-                <element signature="e#36779#36780#0" expanded="false" />
-                <element signature="e#36947#36948#0" expanded="false" />
-                <element signature="e#36983#36984#0" expanded="false" />
-                <element signature="e#40071#40072#0" expanded="false" />
-                <element signature="e#40120#40121#0" expanded="false" />
-                <element signature="e#40861#40862#0" expanded="false" />
-                <element signature="e#40899#40900#0" expanded="false" />
-                <element signature="e#41094#41095#0" expanded="false" />
-                <element signature="e#41154#41155#0" expanded="false" />
-                <element signature="e#41207#41208#0" expanded="false" />
-                <element signature="e#41250#41251#0" expanded="false" />
-                <element signature="e#43885#43886#0" expanded="false" />
-                <element signature="e#43938#43939#0" expanded="false" />
-                <element signature="e#44252#44253#0" expanded="false" />
-                <element signature="e#44297#44298#0" expanded="false" />
-                <element signature="e#48614#48615#0" expanded="false" />
-                <element signature="e#48655#48656#0" expanded="false" />
-                <element signature="e#48971#48972#0" expanded="false" />
-                <element signature="e#49025#49026#0" expanded="false" />
-                <element signature="e#61627#61628#0" expanded="false" />
-                <element signature="e#61673#61674#0" expanded="false" />
-                <element signature="e#61871#61872#0" expanded="false" />
-                <element signature="e#61911#61912#0" expanded="false" />
-                <element signature="e#64251#64264#0" expanded="false" />
-                <element signature="e#64889#64890#0" expanded="false" />
-                <element signature="e#64954#64955#0" expanded="false" />
-                <element signature="e#65017#65018#0" expanded="false" />
-                <element signature="e#65082#65083#0" expanded="false" />
-                <element signature="e#68816#68817#0" expanded="false" />
-                <element signature="e#68848#68849#0" expanded="false" />
-                <element signature="e#69493#69494#0" expanded="false" />
-                <element signature="e#69529#69530#0" expanded="false" />
-                <element signature="e#69941#69942#0" expanded="false" />
-                <element signature="e#69968#69969#0" expanded="false" />
-                <element signature="e#72089#72090#0" expanded="false" />
-                <element signature="e#72149#72150#0" expanded="false" />
-                <element signature="e#72232#72233#0" expanded="false" />
-                <element signature="e#72293#72294#0" expanded="false" />
-                <element signature="e#72383#72384#0" expanded="false" />
-                <element signature="e#72441#72442#0" expanded="false" />
-                <element signature="e#72535#72536#0" expanded="false" />
-                <element signature="e#72594#72595#0" expanded="false" />
-                <element signature="e#72673#72674#0" expanded="false" />
-                <element signature="e#72732#72733#0" expanded="false" />
-                <element signature="e#72815#72816#0" expanded="false" />
-                <element signature="e#72875#72876#0" expanded="false" />
-                <element signature="e#75130#75131#0" expanded="false" />
-                <element signature="e#75178#75179#0" expanded="false" />
-                <element signature="e#75844#75845#0" expanded="false" />
-                <element signature="e#75877#75878#0" expanded="false" />
-                <element signature="e#76059#76060#0" expanded="false" />
-                <element signature="e#76098#76099#0" expanded="false" />
-                <element signature="e#78595#78596#0" expanded="false" />
-                <element signature="e#78629#78630#0" expanded="false" />
-                <element signature="e#78710#78711#0" expanded="false" />
-                <element signature="e#78756#78757#0" expanded="false" />
-                <element signature="e#81195#81196#0" expanded="false" />
-                <element signature="e#81246#81247#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -671,11 +555,11 @@
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/gradle.properties" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt" />
         <option value="$PROJECT_DIR$/src/test/java/hu/szte/eval/FMeasure.java" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/workTime/WorkTimeCalculation.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/util/Util.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt" />
       </list>
     </option>
   </component>
@@ -766,7 +650,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -782,58 +666,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="stancforma-time" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stancforma-time" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stancforma-time" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kotlin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mwe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stancforma-time" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stancforma-time" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eval" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -889,8 +721,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -912,7 +744,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/kotlin/META-INF" />
   </component>
-  <component name="RunManager" selected="Kotlin.hu.stancforma.workTime.WorkTimeCalculation">
+  <component name="RunManager" selected="Kotlin.hu.stancforma.workTime.WorkTimeCalculationKt">
     <configuration default="false" name="FMeasure" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -963,7 +795,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="hu.stancforma.workTime.WorkTimeCalculationKt" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;./data/txt/januar&quot; 158" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;./data/txt/2016_aprilis&quot; 168" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -1584,11 +1416,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Kotlin.hu.stancforma.workTime.WorkTimeCalculation" />
-        <item index="1" class="java.lang.String" itemvalue="Kotlin.hu.stancforma.excel.CreateExcelKt" />
-        <item index="2" class="java.lang.String" itemvalue="Kotlin.hu.stancforma.workTime.WorkTimeCalculationKt" />
-        <item index="3" class="java.lang.String" itemvalue="Application.FMeasure" />
-        <item index="4" class="java.lang.String" itemvalue="Kotlin.hu.szte.mwe.DictionaryLabelKt" />
+        <item index="0" class="java.lang.String" itemvalue="Kotlin.hu.stancforma.workTime.WorkTimeCalculationKt" />
+        <item index="1" class="java.lang.String" itemvalue="Kotlin.hu.stancforma.workTime.WorkTimeCalculation" />
+        <item index="2" class="java.lang.String" itemvalue="Application.FMeasure" />
+        <item index="3" class="java.lang.String" itemvalue="Kotlin.hu.szte.mwe.DictionaryLabelKt" />
+        <item index="4" class="java.lang.String" itemvalue="Kotlin.hu.stancforma.excel.CreateExcelKt" />
       </list>
     </recent_temporary>
   </component>
@@ -1628,7 +1460,14 @@
       <workItem from="1462127837837" duration="1668000" />
       <workItem from="1462180757167" duration="10934000" />
       <workItem from="1462350216990" duration="2787000" />
-      <workItem from="1462430750376" duration="3424000" />
+      <workItem from="1462430750376" duration="5171000" />
+      <workItem from="1462544164683" duration="3146000" />
+      <workItem from="1462725418137" duration="8465000" />
+      <workItem from="1462980610060" duration="594000" />
+      <workItem from="1463043035555" duration="2521000" />
+      <workItem from="1463256194210" duration="598000" />
+      <workItem from="1463495772348" duration="1952000" />
+      <workItem from="1463564585787" duration="174000" />
     </task>
     <task id="LOCAL-00001" summary="do it">
       <created>1459635065102</created>
@@ -1693,11 +1532,18 @@
       <option name="project" value="LOCAL" />
       <updated>1462364371002</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="finish processing">
+      <created>1462434252955</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1462434252955</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93682000" />
+    <option name="totallyTimeSpent" value="112879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="807" extended-state="0" />
@@ -1719,7 +1565,6 @@
       <window_info id="Samebug" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31882024" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2539342" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1738,6 +1583,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="470" y="389" width="784" height="240" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31882024" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1772,12 +1618,6 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt</url>
-          <line>45</line>
-          <properties />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt</url>
           <line>281</line>
           <properties />
@@ -1789,6 +1629,18 @@
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt</url>
+          <line>78</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14/5cf7a94c492c51ed82cf32c44cb63494d353a048/poi-3.14-sources.jar!/org/apache/poi/ss/formula/FormulaParser.java</url>
           <line>567</line>
@@ -1796,20 +1648,11 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="22" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JetRunConfigurationType">
-        <watch expression="splittedLine[enteringIndex]" language="kotlin" custom="" />
-        <watch expression="begin.hourOfDay" language="kotlin" custom="" />
-        <watch expression="0&gt;=begin.hourOfDay &amp;&amp; begin.hourOfDay&lt;=9" language="kotlin" custom="" />
-        <watch expression="j &lt; sentence.size" language="kotlin" custom="" />
-        <watch expression="collocationIndex &lt; collokationArray.size" language="kotlin" custom="" />
-        <watch expression="sentence.get(j).token.equals(collokationArray[collocationIndex])" language="kotlin" custom="" />
-        <watch expression="sentence.get(j).token" language="kotlin" custom="" />
-        <watch expression="sumFormulaWorkTime" language="kotlin" custom="" />
-        <watch expression="sumFormulaCorrigateWorkTime" language="kotlin" custom="" />
-        <watch expression="sumAllFormula" language="kotlin" custom="" />
+        <watch expression="collokationArray[0]" language="kotlin" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -1973,24 +1816,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6960">
           <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31176#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10111#10112#0" expanded="false" />
-            <element signature="e#10136#10137#0" expanded="false" />
-            <element signature="e#11868#11869#0" expanded="false" />
-            <element signature="e#11926#11927#0" expanded="false" />
-            <element signature="e#18602#18603#0" expanded="false" />
-            <element signature="e#18672#18673#0" expanded="false" />
-            <element signature="e#19556#19557#0" expanded="false" />
-            <element signature="e#19600#19601#0" expanded="false" />
-            <element signature="e#21817#21818#0" expanded="false" />
-            <element signature="e#21875#21876#0" expanded="false" />
-            <element signature="e#22029#22030#0" expanded="false" />
-            <element signature="e#22078#22079#0" expanded="false" />
-            <element signature="e#23369#23370#0" expanded="false" />
-            <element signature="e#23426#23427#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2169,24 +1995,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6960">
           <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31176#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10111#10112#0" expanded="false" />
-            <element signature="e#10136#10137#0" expanded="false" />
-            <element signature="e#11868#11869#0" expanded="false" />
-            <element signature="e#11926#11927#0" expanded="false" />
-            <element signature="e#18602#18603#0" expanded="false" />
-            <element signature="e#18672#18673#0" expanded="false" />
-            <element signature="e#19556#19557#0" expanded="false" />
-            <element signature="e#19600#19601#0" expanded="false" />
-            <element signature="e#21817#21818#0" expanded="false" />
-            <element signature="e#21875#21876#0" expanded="false" />
-            <element signature="e#22029#22030#0" expanded="false" />
-            <element signature="e#22078#22079#0" expanded="false" />
-            <element signature="e#23369#23370#0" expanded="false" />
-            <element signature="e#23426#23427#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2365,24 +2174,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6960">
           <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31176#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10111#10112#0" expanded="false" />
-            <element signature="e#10136#10137#0" expanded="false" />
-            <element signature="e#11868#11869#0" expanded="false" />
-            <element signature="e#11926#11927#0" expanded="false" />
-            <element signature="e#18602#18603#0" expanded="false" />
-            <element signature="e#18672#18673#0" expanded="false" />
-            <element signature="e#19556#19557#0" expanded="false" />
-            <element signature="e#19600#19601#0" expanded="false" />
-            <element signature="e#21817#21818#0" expanded="false" />
-            <element signature="e#21875#21876#0" expanded="false" />
-            <element signature="e#22029#22030#0" expanded="false" />
-            <element signature="e#22078#22079#0" expanded="false" />
-            <element signature="e#23369#23370#0" expanded="false" />
-            <element signature="e#23426#23427#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2434,24 +2226,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6960">
           <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31176#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10111#10112#0" expanded="false" />
-            <element signature="e#10136#10137#0" expanded="false" />
-            <element signature="e#11868#11869#0" expanded="false" />
-            <element signature="e#11926#11927#0" expanded="false" />
-            <element signature="e#18602#18603#0" expanded="false" />
-            <element signature="e#18672#18673#0" expanded="false" />
-            <element signature="e#19556#19557#0" expanded="false" />
-            <element signature="e#19600#19601#0" expanded="false" />
-            <element signature="e#21817#21818#0" expanded="false" />
-            <element signature="e#21875#21876#0" expanded="false" />
-            <element signature="e#22029#22030#0" expanded="false" />
-            <element signature="e#22078#22079#0" expanded="false" />
-            <element signature="e#23369#23370#0" expanded="false" />
-            <element signature="e#23426#23427#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2496,24 +2271,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6960">
           <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31176#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10111#10112#0" expanded="false" />
-            <element signature="e#10136#10137#0" expanded="false" />
-            <element signature="e#11868#11869#0" expanded="false" />
-            <element signature="e#11926#11927#0" expanded="false" />
-            <element signature="e#18602#18603#0" expanded="false" />
-            <element signature="e#18672#18673#0" expanded="false" />
-            <element signature="e#19556#19557#0" expanded="false" />
-            <element signature="e#19600#19601#0" expanded="false" />
-            <element signature="e#21817#21818#0" expanded="false" />
-            <element signature="e#21875#21876#0" expanded="false" />
-            <element signature="e#22029#22030#0" expanded="false" />
-            <element signature="e#22078#22079#0" expanded="false" />
-            <element signature="e#23369#23370#0" expanded="false" />
-            <element signature="e#23426#23427#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2568,42 +2326,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/util/TimeZone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6960">
-          <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#31176#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#10111#10112#0" expanded="false" />
-            <element signature="e#10136#10137#0" expanded="false" />
-            <element signature="e#11868#11869#0" expanded="false" />
-            <element signature="e#11926#11927#0" expanded="false" />
-            <element signature="e#18602#18603#0" expanded="false" />
-            <element signature="e#18672#18673#0" expanded="false" />
-            <element signature="e#19556#19557#0" expanded="false" />
-            <element signature="e#19600#19601#0" expanded="false" />
-            <element signature="e#21817#21818#0" expanded="false" />
-            <element signature="e#21875#21876#0" expanded="false" />
-            <element signature="e#22029#22030#0" expanded="false" />
-            <element signature="e#22078#22079#0" expanded="false" />
-            <element signature="e#23369#23370#0" expanded="false" />
-            <element signature="e#23426#23427#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.0-rc-1050/bdbc50fd286f44b7da345c0562bd9b79dd10ff1c/kotlin-stdlib-1.0.0-rc-1050-sources.jar!/generated/_Collections.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20550">
           <caret line="1373" column="0" selection-start-line="1373" selection-start-column="0" selection-end-line="1373" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.0-rc-1050/bdbc50fd286f44b7da345c0562bd9b79dd10ff1c/kotlin-stdlib-1.0.0-rc-1050-sources.jar!/kotlin/text/StringsJVM.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -2742,16 +2468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
-          <folding>
-            <element signature="e#21#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi/3.14/5cf7a94c492c51ed82cf32c44cb63494d353a048/poi-3.14-sources.jar!/org/apache/poi/ss/formula/FormulaParsingWorkbook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -2781,126 +2497,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14/736eeb639587c8efa620d5f10fd6fee53ad1996f/poi-ooxml-3.14-sources.jar!/org/apache/poi/xssf/usermodel/XSSFWorkbook.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.0.0-rc-1050/bdbc50fd286f44b7da345c0562bd9b79dd10ff1c/kotlin-stdlib-1.0.0-rc-1050-sources.jar!/kotlin/text/StringsJVM.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="216" column="23" selection-start-line="216" selection-start-column="11" selection-end-line="216" selection-end-column="23" />
+        <state relative-caret-position="287">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/util/TimeZone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6960">
+          <caret line="515" column="22" selection-start-line="515" selection-start-column="22" selection-end-line="515" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/hu/szte/mwe/DictionaryLabel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding>
-            <element signature="e#0#81250#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#12846#12865#0" expanded="false" />
-            <element signature="e#12934#12962#0" expanded="false" />
-            <element signature="e#18811#18812#0" expanded="false" />
-            <element signature="e#18847#18848#0" expanded="false" />
-            <element signature="e#26895#26896#0" expanded="false" />
-            <element signature="e#26948#26949#0" expanded="false" />
-            <element signature="e#34611#34612#0" expanded="false" />
-            <element signature="e#34662#34663#0" expanded="false" />
-            <element signature="e#34858#34859#0" expanded="false" />
-            <element signature="e#34908#34909#0" expanded="false" />
-            <element signature="e#36294#36295#0" expanded="false" />
-            <element signature="e#36348#36349#0" expanded="false" />
-            <element signature="e#36507#36508#0" expanded="false" />
-            <element signature="e#36567#36568#0" expanded="false" />
-            <element signature="e#36738#36739#0" expanded="false" />
-            <element signature="e#36779#36780#0" expanded="false" />
-            <element signature="e#36947#36948#0" expanded="false" />
-            <element signature="e#36983#36984#0" expanded="false" />
-            <element signature="e#40071#40072#0" expanded="false" />
-            <element signature="e#40120#40121#0" expanded="false" />
-            <element signature="e#40861#40862#0" expanded="false" />
-            <element signature="e#40899#40900#0" expanded="false" />
-            <element signature="e#41094#41095#0" expanded="false" />
-            <element signature="e#41154#41155#0" expanded="false" />
-            <element signature="e#41207#41208#0" expanded="false" />
-            <element signature="e#41250#41251#0" expanded="false" />
-            <element signature="e#43885#43886#0" expanded="false" />
-            <element signature="e#43938#43939#0" expanded="false" />
-            <element signature="e#44252#44253#0" expanded="false" />
-            <element signature="e#44297#44298#0" expanded="false" />
-            <element signature="e#48614#48615#0" expanded="false" />
-            <element signature="e#48655#48656#0" expanded="false" />
-            <element signature="e#48971#48972#0" expanded="false" />
-            <element signature="e#49025#49026#0" expanded="false" />
-            <element signature="e#61627#61628#0" expanded="false" />
-            <element signature="e#61673#61674#0" expanded="false" />
-            <element signature="e#61871#61872#0" expanded="false" />
-            <element signature="e#61911#61912#0" expanded="false" />
-            <element signature="e#64251#64264#0" expanded="false" />
-            <element signature="e#64889#64890#0" expanded="false" />
-            <element signature="e#64954#64955#0" expanded="false" />
-            <element signature="e#65017#65018#0" expanded="false" />
-            <element signature="e#65082#65083#0" expanded="false" />
-            <element signature="e#68816#68817#0" expanded="false" />
-            <element signature="e#68848#68849#0" expanded="false" />
-            <element signature="e#69493#69494#0" expanded="false" />
-            <element signature="e#69529#69530#0" expanded="false" />
-            <element signature="e#69941#69942#0" expanded="false" />
-            <element signature="e#69968#69969#0" expanded="false" />
-            <element signature="e#72089#72090#0" expanded="false" />
-            <element signature="e#72149#72150#0" expanded="false" />
-            <element signature="e#72232#72233#0" expanded="false" />
-            <element signature="e#72293#72294#0" expanded="false" />
-            <element signature="e#72383#72384#0" expanded="false" />
-            <element signature="e#72441#72442#0" expanded="false" />
-            <element signature="e#72535#72536#0" expanded="false" />
-            <element signature="e#72594#72595#0" expanded="false" />
-            <element signature="e#72673#72674#0" expanded="false" />
-            <element signature="e#72732#72733#0" expanded="false" />
-            <element signature="e#72815#72816#0" expanded="false" />
-            <element signature="e#72875#72876#0" expanded="false" />
-            <element signature="e#75130#75131#0" expanded="false" />
-            <element signature="e#75178#75179#0" expanded="false" />
-            <element signature="e#75844#75845#0" expanded="false" />
-            <element signature="e#75877#75878#0" expanded="false" />
-            <element signature="e#76059#76060#0" expanded="false" />
-            <element signature="e#76098#76099#0" expanded="false" />
-            <element signature="e#78595#78596#0" expanded="false" />
-            <element signature="e#78629#78630#0" expanded="false" />
-            <element signature="e#78710#78711#0" expanded="false" />
-            <element signature="e#78756#78757#0" expanded="false" />
-            <element signature="e#81195#81196#0" expanded="false" />
-            <element signature="e#81246#81247#0" expanded="false" />
+            <element signature="e#21#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/hu/szte/eval/FMeasure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8010">
-          <caret line="552" column="0" selection-start-line="552" selection-start-column="0" selection-end-line="552" selection-end-column="0" />
+        <state relative-caret-position="7785">
+          <caret line="537" column="15" selection-start-line="537" selection-start-column="15" selection-end-line="537" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#397#415#0" expanded="false" />
-            <element signature="e#466#474#0" expanded="false" />
-            <element signature="e#1044#1045#0" expanded="false" />
-            <element signature="e#1087#1088#0" expanded="false" />
-            <element signature="e#1185#1186#0" expanded="false" />
-            <element signature="e#1226#1227#0" expanded="false" />
-            <element signature="e#1322#1323#0" expanded="false" />
-            <element signature="e#1362#1363#0" expanded="false" />
-            <element signature="e#1500#1501#0" expanded="false" />
-            <element signature="e#1556#1557#0" expanded="false" />
-            <element signature="e#1686#1687#0" expanded="false" />
-            <element signature="e#1738#1739#0" expanded="false" />
-            <element signature="e#1864#1865#0" expanded="false" />
-            <element signature="e#1914#1915#0" expanded="false" />
-            <element signature="e#8661#8677#0" expanded="false" />
-            <element signature="e#10447#10455#0" expanded="false" />
-            <element signature="e#10513#10521#0" expanded="false" />
-            <element signature="e#11349#11357#0" expanded="false" />
-            <element signature="e#11411#11419#0" expanded="false" />
-            <element signature="e#15187#15193#0" expanded="false" />
-            <element signature="e#16592#16593#0" expanded="false" />
-            <element signature="e#16656#16657#0" expanded="false" />
+            <element signature="e#29#392#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.poi/poi-ooxml/3.14/736eeb639587c8efa620d5f10fd6fee53ad1996f/poi-ooxml-3.14-sources.jar!/org/apache/poi/xssf/usermodel/XSSFWorkbook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="216" column="23" selection-start-line="216" selection-start-column="11" selection-end-line="216" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/util/Util.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="97" column="11" selection-start-line="97" selection-start-column="11" selection-end-line="97" selection-end-column="11" />
+        <state relative-caret-position="1245">
+          <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
           <folding>
             <element signature="e#28#298#0" expanded="true" />
           </folding>
@@ -2909,20 +2560,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/workTime/WorkTimeCalculation.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        <state relative-caret-position="542">
+          <caret line="174" column="5" selection-start-line="174" selection-start-column="5" selection-end-line="174" selection-end-column="5" />
           <folding>
             <element signature="e#32#196#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/hu/stancforma/excel/CreateExcel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-          <folding>
-            <element signature="e#29#392#0" expanded="true" />
           </folding>
         </state>
       </provider>
