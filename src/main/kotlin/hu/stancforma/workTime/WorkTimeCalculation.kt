@@ -9,7 +9,7 @@ import java.util.*
 
 public class WorkTimeCalculation {
 
-    companion object{
+    companion object {
         val userDb = readUserDB()
 
         @JvmStatic fun main(args: Array<String>) {
@@ -27,42 +27,43 @@ public class WorkTimeCalculation {
     }
 
 
-    public fun readUserDatas(rootDirectory : String,workHours : Int){
+    public fun readUserDatas(rootDirectory: String, workHours: Int) {
 
         File(rootDirectory).listFiles().filter { file -> file.name.endsWith(".txt") }.forEach { file ->
-            readUserData(file,workHours)
+            readUserData(file, workHours)
         }
     }
 
-    public fun readUserData(file : File,workHours : Int) {
+    public fun readUserData(file: File, workHours: Int) {
         //val file = File("./data/Nagy_F_0316_0404.txt")
         val lines = file.readLines(charset("ISO-8859-1"))
         val userTimeDataByDay = HashMap<Int, EnteringData>()
         val enterings = HashMap<Int, LinkedList<DateTime>>()
-        val exits = HashMap<Int,LinkedList<DateTime>>()
-        for (i in 10..lines.size - 5) {
+        val exits = HashMap<Int, LinkedList<DateTime>>()
+        for (i in 6..lines.size - 1) {
 
             //println(lines[i].split(Regex("\\s")).size)
             val splittedLine = lines[i].split(Regex("\\s"))
-            val date = parseDate(getItemInList(1, splittedLine), getItemInList(2, splittedLine))
-            val day = date.dayOfMonth().get()
-            val enteringType = getItemInList(5, splittedLine)
+            if (getItemInList(1, splittedLine).contains(".")) {
+                val date = parseDate(getItemInList(1, splittedLine), getItemInList(2, splittedLine))
+                val day = date.dayOfMonth().get()
+                val enteringType = getItemInList(5, splittedLine)
 
-            if ("kilépés".equals(enteringType)) {
-                putMapList(day, date,exits)
-            } else if ("belépés".equals(enteringType)) {
-                putMapList(day, date,enterings)
-            } else {
-                println("something worng at : " + splittedLine)
+                if ("kilépés".equals(enteringType)) {
+                    putMapList(day, date, exits)
+                } else if ("belépés".equals(enteringType)) {
+                    putMapList(day, date, enterings)
+                } else {
+                    println("something worng at : " + splittedLine)
+                }
             }
-
             //println("$date   ${getItemInList(5, splittedLine)}")
             //println(parseDate(getItemInList(1, splittedLine), getItemInList(2, splittedLine)))
         }
         enterings.forEach { day, enterings ->
             //TODO getOrELsere cserelni
             val exits = exits.getOrElse(day, { LinkedList<DateTime>() })
-            userTimeDataByDay.put(day, EnteringData(enterings,exits))
+            userTimeDataByDay.put(day, EnteringData(enterings, exits))
         }
         val result = getWorkTime(userTimeDataByDay)
         //println(result)
@@ -71,22 +72,22 @@ public class WorkTimeCalculation {
         val userName = extractNameFromFileName(file)
         val userData = userDb.get(userName)
 
-        if (userData != null){
+        if (userData != null) {
             val createExcel = CreateExcel()
             val fileName = file.name.split(Regex("/")).last().split(".")[0]
-            val workbook = createExcel.createXlsToUserData(result, extractNameFromFileName(file),userData.oraBer,userData.bruttoBer,workHours)
+            val workbook = createExcel.createXlsToUserData(result, extractNameFromFileName(file), userData.oraBer, userData.bruttoBer, workHours)
             val directory = "$resultsRootDirectory/${getDirectory(file.path)}"
-            if (!File(directory).exists()){
+            if (!File(directory).exists()) {
                 File(directory).mkdirs()
             }
             writeWorkBook(workbook, "$directory/$fileName.xlsx")
         } else {
-            println("$file\t$userName")
+            println("probléma: $file\t$userName")
             //System.exit(1)
         }
     }
 
-    private fun getWorkTime(userTimeDataByDay : HashMap<Int,EnteringData>) : LinkedList<WorkTimeData>{
+    private fun getWorkTime(userTimeDataByDay: HashMap<Int, EnteringData>): LinkedList<WorkTimeData> {
         val results = LinkedList<WorkTimeData>()
         userTimeDataByDay.forEach { day, enterings ->
             var workMinutes = 0L
@@ -96,15 +97,15 @@ public class WorkTimeCalculation {
                 for (j in 0..enterings.entering.size - 1) {
                     workMinutes += getDiff(enterings.entering[j], enterings.exit[j])
                 }
-                results.add(WorkTimeData(workMinutes,enterings.entering.last(),enterings.exit.first(),getDayOfDate(enterings.entering.last())))
+                results.add(WorkTimeData(workMinutes, enterings.entering.last(), enterings.exit.first(), getDayOfDate(enterings.entering.last())))
 
             } else {
-                if (enterings.entering.isNotEmpty() && enterings.exit.isNotEmpty()){
-                    results.add(WorkTimeData(0L,enterings.entering.last(),enterings.exit.first(),getDayOfDate(enterings.entering.last())))
-                } else if (enterings.entering.isNotEmpty() && enterings.exit.isEmpty()){
-                    results.add(WorkTimeData(0L,enterings.entering.last(),enterings.entering.first(),getDayOfDate(enterings.entering.last())))
-                } else if (enterings.entering.isEmpty() && enterings.exit.isNotEmpty()){
-                    results.add(WorkTimeData(0L,enterings.exit.last(),enterings.exit.first(),getDayOfDate(enterings.exit.first())))
+                if (enterings.entering.isNotEmpty() && enterings.exit.isNotEmpty()) {
+                    results.add(WorkTimeData(0L, enterings.entering.last(), enterings.exit.first(), getDayOfDate(enterings.entering.last())))
+                } else if (enterings.entering.isNotEmpty() && enterings.exit.isEmpty()) {
+                    results.add(WorkTimeData(0L, enterings.entering.last(), enterings.entering.first(), getDayOfDate(enterings.entering.last())))
+                } else if (enterings.entering.isEmpty() && enterings.exit.isNotEmpty()) {
+                    results.add(WorkTimeData(0L, enterings.exit.last(), enterings.exit.first(), getDayOfDate(enterings.exit.first())))
                 }
 
                 println("ki/belepesi problema: ${enterings.entering.first()}")
@@ -147,12 +148,12 @@ public class WorkTimeCalculation {
     }
 
     private fun getDiff(enter: DateTime, exit: DateTime): Int {
-        return Minutes.minutesBetween(enter,exit).minutes
+        return Minutes.minutesBetween(enter, exit).minutes
         //val diff = Duration.between(enter.toInstant(), exit.toInstant())
         //return diff.toMinutes()
     }
 
-    public fun printResults(result : LinkedList<WorkTimeData>){
+    public fun printResults(result: LinkedList<WorkTimeData>) {
         result.forEach { entity ->
             val date = entity.begin
             println("${entity.date},${entity.workTimeMinutes}")
@@ -161,15 +162,14 @@ public class WorkTimeCalculation {
     }
 
 
-
 }
 
 fun main(args: Array<String>) {
     val run = WorkTimeCalculation()
     //run.readOneDayData()
     if (args.size == 2){
-        args[0]
-        run.readUserDatas(args[0],args[1].toInt())
+    //run.readUserDatas("./data/txt/2016_majus", 160)
+        run.readUserDatas(args[0], args[1].toInt())
     } else {
         println(args.joinToString("\n"))
     }

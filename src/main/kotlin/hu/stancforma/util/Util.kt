@@ -40,7 +40,7 @@ public fun writeWorkBook(workbook: XSSFWorkbook, fileName: String) {
     val out = FileOutputStream(File(fileName))
     workbook.write(out)
     out.close()
-    println("$fileName written successfully on disk.")
+    println("$fileName sikeresen legeneralva.")
 
 
 }
@@ -79,7 +79,7 @@ public fun extractNameFromFileName(file : File) : String {
   //  } else {
         if (splittedFileName.size< 2 ){
             //println("File nev problema: " + file)
-            return splittedFileName[0]
+            return splittedFileName[0].split(".")[0]
         } else {
             return "${splittedFileName[0]}_${splittedFileName[1].split(".")[0]}"
 
@@ -98,8 +98,8 @@ public fun readUserDB() : Map<String,UserData>{
 }
 
 public fun getDirectory(rootDirectory : String) : String{
-    //return rootDirectory.split("\\").dropLast(1).last()
-    return rootDirectory.split("/").dropLast(1).last()
+    return rootDirectory.split("\\").dropLast(1).last()
+    //return rootDirectory.split("/").dropLast(1).last()
 }
 
 public fun setColor(workbook : HSSFWorkbook, r : Byte, g : Byte, b : Byte) : HSSFColor? {
