@@ -9,15 +9,16 @@ import java.util.*
 
 public class WorkTimeCalculation {
 
+
     companion object {
         val userDb = readUserDB()
-
+        public val LOG = StringBuffer()
         @JvmStatic fun main(args: Array<String>) {
             val run = WorkTimeCalculation()
             //run.readOneDayData()
-            if (args.size == 2){
+            if (args.size == 2) {
                 args[0]
-                run.readUserDatas(args[0],args[1].toInt())
+                run.readUsersData(args[0], args[1].toInt())
             } else {
                 println("Helyes hasznalat a kovetkezo:")
                 println("java -cp stancforma-time_main.jar hu.stancforma.workTime.WorkTimeCalculation ./data/txt/januar 160")
@@ -26,12 +27,24 @@ public class WorkTimeCalculation {
         }
     }
 
+    public fun getLog() : String{
+        return LOG.toString()
+    }
 
-    public fun readUserDatas(rootDirectory: String, workHours: Int) {
+
+    public fun readUsersData(rootDirectory: String, workHours: Int) {
 
         File(rootDirectory).listFiles().filter { file -> file.name.endsWith(".txt") }.forEach { file ->
             readUserData(file, workHours)
         }
+    }
+
+    public fun readUsersData(files: List<File>, workHours: Int) {
+
+        files.filter { file -> file.name.endsWith(".txt") }.forEach { file ->
+            readUserData(file, workHours)
+        }
+
     }
 
     public fun readUserData(file: File, workHours: Int) {
@@ -55,6 +68,7 @@ public class WorkTimeCalculation {
                     putMapList(day, date, enterings)
                 } else {
                     println("something worng at : " + splittedLine)
+                    LOG.append("something worng at : " + splittedLine)
                 }
             }
             //println("$date   ${getItemInList(5, splittedLine)}")
@@ -80,9 +94,10 @@ public class WorkTimeCalculation {
             if (!File(directory).exists()) {
                 File(directory).mkdirs()
             }
-            writeWorkBook(workbook, "$directory/$fileName.xlsx")
+            LOG.appendln(writeWorkBook(workbook, "$directory/$fileName.xlsx"))
         } else {
             println("probléma: $file\t$userName")
+            LOG.appendln("probléma: $file\t$userName")
             //System.exit(1)
         }
     }
@@ -109,6 +124,7 @@ public class WorkTimeCalculation {
                 }
 
                 println("ki/belepesi problema: ${enterings.entering.first()}")
+                LOG.appendln("ki/belepesi problema: ${enterings.entering.first()}")
             }
         }
         return results
@@ -167,9 +183,9 @@ public class WorkTimeCalculation {
 fun main(args: Array<String>) {
     val run = WorkTimeCalculation()
     //run.readOneDayData()
-    if (args.size == 2){
-    //run.readUserDatas("./data/txt/2016_majus", 160)
-        run.readUserDatas(args[0], args[1].toInt())
+    if (args.size == 2) {
+        //run.readUsersData("./data/txt/2016_majus", 160)
+        run.readUsersData(args[0], args[1].toInt())
     } else {
         println(args.joinToString("\n"))
     }
