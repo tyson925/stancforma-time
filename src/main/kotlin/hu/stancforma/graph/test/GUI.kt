@@ -1,5 +1,6 @@
 package hu.stancforma.graph.test
 
+import hu.stancforma.util.readUserDB
 import hu.stancforma.workTime.WorkTimeCalculation
 import java.awt.BorderLayout
 import java.awt.Insets
@@ -8,7 +9,7 @@ import java.awt.event.ActionListener
 import java.io.File
 import javax.swing.*
 
-public class FileChooserDemo : JPanel, ActionListener {
+public class GUI : JPanel, ActionListener {
 
     val newline = "\n"
     var openButton: JButton? = null
@@ -22,24 +23,31 @@ public class FileChooserDemo : JPanel, ActionListener {
     companion object {
         //Create a file chooser
         val fileChooser = JFileChooser()
-    }
 
+        @JvmStatic fun main(args: Array<String>) {
+            SwingUtilities.invokeLater {
+                //Turn off metal's use of bold fonts
+                UIManager.put("swing.boldMetal", java.lang.Boolean.FALSE)
+                GUI().createAndShowGUI()
+            }
+        }
+    }
     constructor() {
-        log = JTextArea(5, 20)
+        log = JTextArea(15, 60)
         log?.setMargin(Insets(5, 5, 5, 5))
         log?.setEditable(false);
         val logScrollPane = JScrollPane(log)
         fileChooser.setMultiSelectionEnabled(true)
 
-        openButton = JButton("Fileok megnyitása...", createImageIcon("images/Open16.gif"))
+        openButton = JButton("Fileok megnyitása...")
         openButton?.addActionListener(this)
 
-        addHoursRateButton = JButton("add hours rates...", createImageIcon("images/Save16.gif"))
+        addHoursRateButton = JButton("Óraszámok")
         addHoursRateButton?.addActionListener(this)
 
         hoursField = JTextField(2)
 
-        runButton = JButton("Futattás", createImageIcon("images/Save16.gif"))
+        runButton = JButton("Futattás")
         runButton?.addActionListener(this)
 
 
@@ -98,7 +106,7 @@ public class FileChooserDemo : JPanel, ActionListener {
 
     /** Returns an ImageIcon, or null if the path was invalid.  */
     fun createImageIcon(path: String): ImageIcon? {
-        val imgURL = FileChooserDemo::class.java.getResource(path)
+        val imgURL = GUI::class.java.getResource(path)
         if (imgURL != null) {
             return ImageIcon(imgURL)
         } else {
@@ -118,7 +126,7 @@ public class FileChooserDemo : JPanel, ActionListener {
         frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
 
         //Add content to the window.
-        frame.add(FileChooserDemo())
+        frame.add(GUI())
 
         //Display the window.
         frame.pack()
@@ -133,6 +141,6 @@ fun main(args: Array<String>) {
     SwingUtilities.invokeLater {
         //Turn off metal's use of bold fonts
         UIManager.put("swing.boldMetal", java.lang.Boolean.FALSE)
-        FileChooserDemo().createAndShowGUI()
+        GUI().createAndShowGUI()
     }
 }

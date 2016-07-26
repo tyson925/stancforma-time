@@ -5,6 +5,14 @@ description 'collokia-spark streaming testbed'
 buildscript {
     ext.kotlin_version = '1.0.0-rc-1050'
     repositories {
+        maven {
+            url "https://collokia.artifactoryonline.com/collokia/collokia-internal"
+            credentials {
+                username "${collokiaRepoUser}"
+                password "${collokiaRepoPass}"
+            }
+        }
+
         jcenter()
         maven {
             url 'http://repo.spring.io/plugins-release'
@@ -20,6 +28,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
         classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+        classpath "com.collokia:kluster-gradle-plugin:0.2.1.3"
     }
 }
 
@@ -28,11 +37,12 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'gradle-one-jar'
+apply plugin: 'kluster'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-mainClassName = 'hu.stancforma.workTime.WorkTimeCalculation'
+mainClassName = 'hu.stancforma.graph.test.GUI'
 
 
 task oneJar(type: OneJar) {

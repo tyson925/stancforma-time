@@ -97,8 +97,8 @@ public fun readUserDB(): Map<String, UserData> {
 }
 
 public fun getDirectory(rootDirectory: String): String {
-//    return rootDirectory.split("\\").dropLast(1).last()
-    return rootDirectory.split("/").dropLast(1).last()
+    return rootDirectory.split("\\").dropLast(1).last()
+//    return rootDirectory.split("/").dropLast(1).last()
 }
 
 public fun setColor(workbook: HSSFWorkbook, r: Byte, g: Byte, b: Byte): HSSFColor? {
