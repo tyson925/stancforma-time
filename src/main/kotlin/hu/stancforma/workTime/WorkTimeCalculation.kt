@@ -7,12 +7,12 @@ import org.joda.time.Minutes
 import java.io.File
 import java.util.*
 
-public class WorkTimeCalculation {
+class WorkTimeCalculation {
 
 
     companion object {
         val userDb = readUserDB()
-        public val LOG = StringBuffer()
+        val LOG = StringBuffer()
         @JvmStatic fun main(args: Array<String>) {
             val run = WorkTimeCalculation()
             //run.readOneDayData()
@@ -21,25 +21,25 @@ public class WorkTimeCalculation {
                 run.readUsersData(args[0], args[1].toInt())
             } else {
                 println("Helyes hasznalat a kovetkezo:")
-                println("java -cp stancforma-time_main.jar hu.stancforma.workTime.WorkTimeCalculation ./data/txt/januar 160")
+                println("java -cp stancforma-time_main.jar hu.stancforma.workTime.WorkTimeCalculation ./data/txt/2016_oktober 160")
                 println("Te ezeket a parametereket adtad meg most:\t${args.joinToString("\t")}")
             }
         }
     }
 
-    public fun getLog() : String{
+    fun getLog() : String{
         return LOG.toString()
     }
 
 
-    public fun readUsersData(rootDirectory: String, workHours: Int) {
+    fun readUsersData(rootDirectory: String, workHours: Int) {
 
         File(rootDirectory).listFiles().filter { file -> file.name.endsWith(".txt") }.forEach { file ->
             readUserData(file, workHours)
         }
     }
 
-    public fun readUsersData(files: List<File>, workHours: Int) {
+    fun readUsersData(files: List<File>, workHours: Int) {
 
         files.filter { file -> file.name.endsWith(".txt") }.forEach { file ->
             readUserData(file, workHours)
@@ -47,7 +47,7 @@ public class WorkTimeCalculation {
 
     }
 
-    public fun readUserData(file: File, workHours: Int) {
+    fun readUserData(file: File, workHours: Int) {
         //val file = File("./data/Nagy_F_0316_0404.txt")
         val lines = file.readLines(charset("ISO-8859-1"))
         val userTimeDataByDay = HashMap<Int, EnteringData>()
@@ -84,7 +84,7 @@ public class WorkTimeCalculation {
         //printResults(result)
 
         val userName = extractNameFromFileName(file)
-        val userData = userDb.get(userName)
+        val userData = userDb[userName]
 
         if (userData != null) {
             val createExcel = CreateExcel()
@@ -169,7 +169,7 @@ public class WorkTimeCalculation {
         //return diff.toMinutes()
     }
 
-    public fun printResults(result: LinkedList<WorkTimeData>) {
+    fun printResults(result: LinkedList<WorkTimeData>) {
         result.forEach { entity ->
             val date = entity.begin
             println("${entity.date},${entity.workTimeMinutes}")
@@ -179,7 +179,7 @@ public class WorkTimeCalculation {
 
 
 }
-
+/*
 fun main(args: Array<String>) {
     val run = WorkTimeCalculation()
     //run.readOneDayData()
@@ -191,5 +191,5 @@ fun main(args: Array<String>) {
     }
 
 
-}
+}*/
 

@@ -4,10 +4,10 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.hssf.util.HSSFColor
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.joda.time.DateTime
-import java.io.Serializable
-import java.util.*
 import java.io.File
 import java.io.FileOutputStream
+import java.io.Serializable
+import java.util.*
 
 //public data class EnteringData(val date : Date, val enteringType : String, val userName : String ) : Serializable
 
@@ -97,8 +97,8 @@ public fun readUserDB(): Map<String, UserData> {
 }
 
 public fun getDirectory(rootDirectory: String): String {
-    return rootDirectory.split("\\").dropLast(1).last()
-//    return rootDirectory.split("/").dropLast(1).last()
+//    return rootDirectory.split("\\").dropLast(1).last()
+    return rootDirectory.split("/").dropLast(1).last()
 }
 
 public fun setColor(workbook: HSSFWorkbook, r: Byte, g: Byte, b: Byte): HSSFColor? {

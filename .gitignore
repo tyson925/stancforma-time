@@ -20,3 +20,5 @@ gradlew.bat
 build
 /.idea/
 /twitter.txt
+data/
+/data/
