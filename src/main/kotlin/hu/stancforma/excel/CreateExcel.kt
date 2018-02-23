@@ -2,24 +2,21 @@ package hu.stancforma.excel
 
 import hu.stancforma.util.WorkTimeData
 import hu.stancforma.util.getMuszakType
-import hu.stancforma.util.setColor
 import hu.stancforma.util.writeWorkBook
 import org.apache.poi.hssf.usermodel.HSSFCell
-import org.apache.poi.hssf.usermodel.HSSFWorkbook
-import org.apache.poi.ss.usermodel.CellStyle
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.util.*
 
 
-public class CreateExcel() {
+class CreateExcel {
 
-    public fun creatXls() {
+    fun creatXls() {
         //Blank workbook
-        val workbook = XSSFWorkbook();
+        val workbook = XSSFWorkbook()
 
         //Create a blank sheet
-        val sheet = workbook.createSheet("Employee Data");
-        val data = TreeMap<String, Array<Any>>();
+        val sheet = workbook.createSheet("Employee Data")
+        val data = TreeMap<String, Array<Any>>()
         data.put("1", arrayOf("ID", "NAME", "LASTNAME"))
         data.put("2", arrayOf(1, "Amit", "Shukla"))
         data.put("3", arrayOf(2, "Lokesh", "Gupta"))
@@ -33,10 +30,10 @@ public class CreateExcel() {
 
             val row = sheet.createRow(rownum++)
             val objArr = data.get(key)!!
-            var cellnum = 0;
+            var cellnum = 0
             objArr.forEach { obj ->
 
-                val cell = row.createCell(cellnum++);
+                val cell = row.createCell(cellnum++)
                 if (obj is String) {
                     cell.setCellValue(obj)
                 } else if (obj is Integer) {
@@ -51,10 +48,10 @@ public class CreateExcel() {
         writeWorkBook(workbook, "./data/test.xlsx")
     }
 
-    public fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, name: String, oraBer: Int, bruttoBer: Int, workHour: Int): XSSFWorkbook {
+    fun createXlsToUserData(timeDatas: LinkedList<WorkTimeData>, name: String, oraBer: Int, bruttoBer: Int, workHour: Int): XSSFWorkbook {
         //Blank workbook
-        val workbook = XSSFWorkbook();
-        val createHelper = workbook.getCreationHelper();
+        val workbook = XSSFWorkbook()
+        val createHelper = workbook.creationHelper
 
         val errorStyle = workbook.createCellStyle()
         //val lightGray =  setColor(HSSFWorkbook(),0, 255.toByte(), 0)
@@ -62,14 +59,14 @@ public class CreateExcel() {
         errorColor.rgb = byteArrayOf(255.toByte(), 0.toByte(), 0)
         //errorStyle.setFillBackgroundColor(lightGray!!.index)
         errorStyle.setFillBackgroundColor(errorColor)
-        errorStyle.setFillPattern(CellStyle.THIN_BACKWARD_DIAG)
+        //errorStyle.fillPattern = CellStyle.THIN_BACKWARD_DIAG
 
 
 
         //errorStyle.setFillForegroundColor(errorColor)
 
         //Create a blank sheet
-        val sheet = workbook.createSheet("Employee Data");
+        val sheet = workbook.createSheet("Employee Data")
 
         val cellStyle = workbook.createCellStyle()
         cellStyle.dataFormat = createHelper.createDataFormat().getFormat("yyyy/m/d")
@@ -107,10 +104,10 @@ public class CreateExcel() {
 
             val row = sheet.createRow(rownum++)
 
-            val dateCell = row.createCell(0);
+            val dateCell = row.createCell(0)
             //println(timeData.date.toDate())
             dateCell.setCellValue(timeData.date.toDate())
-            dateCell.setCellStyle(cellStyle)
+            dateCell.cellStyle = cellStyle
             val muszakCell = row.createCell(1)
             val muszak = getMuszakType(timeData.begin, timeData.end)
 
@@ -121,10 +118,10 @@ public class CreateExcel() {
 
             val beginTimeCell = row.createCell(2)
             beginTimeCell.setCellValue(timeData.begin.toDate())
-            beginTimeCell.setCellStyle(cellStyle2)
+            beginTimeCell.cellStyle = cellStyle2
             val endTimeCell = row.createCell(3)
             endTimeCell.setCellValue(timeData.end.toDate())
-            endTimeCell.setCellStyle(cellStyle2)
+            endTimeCell.cellStyle = cellStyle2
             //val workTimeCell = row.createCell(4)
             //val corrigateWorkTimeCell = row.createCell(5)
 
@@ -166,20 +163,20 @@ public class CreateExcel() {
         val holidayWorkTimeColumn = "G"
         var sumMorningWorkTimeCell = sumRow.createCell(morningColumn)
         val sumFormulaWorkTime = "SUM(${morningWorkTimeColumn}2:${morningWorkTimeColumn}${lastRow})"
-        sumMorningWorkTimeCell.setCellType(HSSFCell.CELL_TYPE_FORMULA);
-        sumMorningWorkTimeCell.setCellFormula(sumFormulaWorkTime)
+        sumMorningWorkTimeCell.cellType = HSSFCell.CELL_TYPE_FORMULA
+        sumMorningWorkTimeCell.cellFormula = sumFormulaWorkTime
 
         var sumAfternoonWorkTimeCell = sumRow.createCell(afternoonColumn)
         //sumCorrigateWorkTimeCell.setCellValue(sumCorrigateWorktime)
         val sumFormulaCorrigateWorkTime = "SUM(${afternoonWorkTimeColumn}2:${afternoonWorkTimeColumn}${lastRow})"
-        sumAfternoonWorkTimeCell.setCellType(HSSFCell.CELL_TYPE_FORMULA)
-        sumAfternoonWorkTimeCell.setCellFormula(sumFormulaCorrigateWorkTime)
+        sumAfternoonWorkTimeCell.cellType = HSSFCell.CELL_TYPE_FORMULA
+        sumAfternoonWorkTimeCell.cellFormula = sumFormulaCorrigateWorkTime
 
         var sumHolidayWorkTimeCell = sumRow.createCell(holidayColumn)
         //sumCorrigateWorkTimeCell.setCellValue(sumCorrigateWorktime)
         val sumFormulaHolidayWorkTime = "SUM(${holidayWorkTimeColumn}2:${holidayWorkTimeColumn}${lastRow})"
-        sumHolidayWorkTimeCell.setCellType(HSSFCell.CELL_TYPE_FORMULA)
-        sumHolidayWorkTimeCell.setCellFormula(sumFormulaHolidayWorkTime)
+        sumHolidayWorkTimeCell.cellType = HSSFCell.CELL_TYPE_FORMULA
+        sumHolidayWorkTimeCell.cellFormula = sumFormulaHolidayWorkTime
 
         val rowHour = sheet.createRow(rownum++)
         rowHour.createCell(3).setCellValue("Oraban:")
@@ -281,8 +278,8 @@ public class CreateExcel() {
 
         val sumAllFormula = "SUM(E${morningRow.rowNum + 1}:E${extraHoursRow.rowNum + 1})"
         val allFee = row3.createCell(4)
-        allFee.setCellType(HSSFCell.CELL_TYPE_FORMULA)
-        allFee.setCellFormula(sumAllFormula)
+        allFee.cellType = HSSFCell.CELL_TYPE_FORMULA
+        allFee.cellFormula = sumAllFormula
 
         return workbook
 

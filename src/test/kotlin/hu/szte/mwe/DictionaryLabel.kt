@@ -3,11 +3,11 @@ package hu.szte.mwe
 import java.io.*
 import java.util.*
 
-public data class PredictedData(val token : String,val prediction : String)
+data class PredictedData(val token : String,val prediction : String)
 
-public class DictionaryLabel(){
+class DictionaryLabel {
 
-    public fun readCorpusData(fileName : String) : List<List<PredictedData>>{
+    fun readCorpusData(fileName : String) : List<List<PredictedData>>{
         val corpus = LinkedList<List<PredictedData>>()
         var sentetence = LinkedList<PredictedData>()
         File(fileName).forEachLine { line ->
@@ -23,7 +23,7 @@ public class DictionaryLabel(){
         return corpus
     }
 
-    public fun printLabelStat(){
+    fun printLabelStat(){
 
         val reader = BufferedReader(InputStreamReader(FileInputStream("./data/collocation_10000.iob")))
         var line : String? = reader.readLine()
@@ -53,12 +53,12 @@ public class DictionaryLabel(){
         println(res)
     }
 
-    public fun readDictRawStringList(fileName : String, take : Int) : List<String>{
+    fun readDictRawStringList(fileName : String, take : Int) : List<String>{
         return File(fileName).readLines().map { line -> line.toLowerCase() }.take(take)
 
     }
 
-    public fun dictionaryLabel(dictionaryName: String, corpus: List<List<PredictedData>>, tag: String) {
+    fun dictionaryLabel(dictionaryName: String, corpus: List<List<PredictedData>>, tag: String) {
         val take = 20000
         val dictionary = readDictRawStringList(dictionaryName,take).map { collocation -> collocation.toLowerCase().trim() }.toSet()
 
@@ -125,7 +125,7 @@ public class DictionaryLabel(){
 fun main(args: Array<String>) {
  val dicLabel = DictionaryLabel()
     val corpus = dicLabel.readCorpusData("./../MWE/data/sancl/schneider.txt")
-    dicLabel.dictionaryLabel("./../MLyBigData/CoreNlp/googleNgramsList.txt",corpus,"COL");
+    dicLabel.dictionaryLabel("./../MLyBigData/CoreNlp/googleNgramsList.txt",corpus,"COL")
     //dicLabel.printLabelStat()
 }
 

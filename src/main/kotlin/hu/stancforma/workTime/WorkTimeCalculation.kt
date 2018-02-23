@@ -3,7 +3,6 @@ package hu.stancforma.workTime
 import hu.stancforma.excel.CreateExcel
 import hu.stancforma.util.*
 import org.joda.time.DateTime
-import org.joda.time.Minutes
 import java.io.File
 import java.util.*
 
@@ -75,7 +74,6 @@ class WorkTimeCalculation {
             //println(parseDate(getItemInList(1, splittedLine), getItemInList(2, splittedLine)))
         }
         enterings.forEach { day, enterings ->
-            //TODO getOrELsere cserelni
             val exits = exits.getOrElse(day, { LinkedList<DateTime>() })
             userTimeDataByDay.put(day, EnteringData(enterings, exits))
         }
@@ -102,33 +100,6 @@ class WorkTimeCalculation {
         }
     }
 
-    private fun getWorkTime(userTimeDataByDay: HashMap<Int, EnteringData>): LinkedList<WorkTimeData> {
-        val results = LinkedList<WorkTimeData>()
-        userTimeDataByDay.forEach { day, enterings ->
-            var workMinutes = 0L
-            enterings.entering.sortedDescending()
-            enterings.exit.sortedDescending()
-            if (enterings.entering.size == enterings.exit.size) {
-                for (j in 0..enterings.entering.size - 1) {
-                    workMinutes += getDiff(enterings.entering[j], enterings.exit[j])
-                }
-                results.add(WorkTimeData(workMinutes, enterings.entering.last(), enterings.exit.first(), getDayOfDate(enterings.entering.last())))
-
-            } else {
-                if (enterings.entering.isNotEmpty() && enterings.exit.isNotEmpty()) {
-                    results.add(WorkTimeData(0L, enterings.entering.last(), enterings.exit.first(), getDayOfDate(enterings.entering.last())))
-                } else if (enterings.entering.isNotEmpty() && enterings.exit.isEmpty()) {
-                    results.add(WorkTimeData(0L, enterings.entering.last(), enterings.entering.first(), getDayOfDate(enterings.entering.last())))
-                } else if (enterings.entering.isEmpty() && enterings.exit.isNotEmpty()) {
-                    results.add(WorkTimeData(0L, enterings.exit.last(), enterings.exit.first(), getDayOfDate(enterings.exit.first())))
-                }
-
-                println("ki/belepesi problema: ${enterings.entering.first()}")
-                LOG.appendln("ki/belepesi problema: ${enterings.entering.first()}")
-            }
-        }
-        return results
-    }
 
     private fun getItemInList(index: Int, text: List<String>): String {
 
@@ -163,11 +134,6 @@ class WorkTimeCalculation {
         return "${name1} ${name2}".trim()
     }
 
-    private fun getDiff(enter: DateTime, exit: DateTime): Int {
-        return Minutes.minutesBetween(enter, exit).minutes
-        //val diff = Duration.between(enter.toInstant(), exit.toInstant())
-        //return diff.toMinutes()
-    }
 
     fun printResults(result: LinkedList<WorkTimeData>) {
         result.forEach { entity ->
@@ -179,17 +145,4 @@ class WorkTimeCalculation {
 
 
 }
-/*
-fun main(args: Array<String>) {
-    val run = WorkTimeCalculation()
-    //run.readOneDayData()
-    if (args.size == 2) {
-        //run.readUsersData("./data/txt/2016_majus", 160)
-        run.readUsersData(args[0], args[1].toInt())
-    } else {
-        println(args.joinToString("\n"))
-    }
-
-
-}*/
 
